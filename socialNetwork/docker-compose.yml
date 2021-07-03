@@ -16,12 +16,9 @@ services:
     ports:
       - 10000:9090
     depends_on:
-      config:
-        condition: service_completed_successfully
-      jaeger:
-        condition: service_started
-      social-graph-mongodb:
-        condition: service_started
+      - config
+      - jaeger
+      - social-graph-mongodb
     restart: always
     entrypoint: SocialGraphService
     volumes:
@@ -34,8 +31,7 @@ services:
     ports:
       - 27018:27017
     depends_on:
-      config:
-        condition: service_completed_successfully
+      - config
     restart: always
     command: --config /social-network-microservices/config/mongod.conf
     volumes:
@@ -48,8 +44,7 @@ services:
     ports:
       - 6380:6379
     depends_on:
-      config:
-        condition: service_completed_successfully
+      -nconfig
     restart: always
     command: /social-network-microservices/config/redis.conf
     volumes:
@@ -62,8 +57,7 @@ services:
     ports:
       - 6381:6379
     depends_on:
-      config:
-        condition: service_completed_successfully
+      - config
     restart: always
     command: /social-network-microservices/config/redis.conf
     volumes:
@@ -77,10 +71,8 @@ services:
       - 10001:9090
     restart: always
     depends_on:
-      config:
-        condition: service_completed_successfully
-      jaeger:
-        condition: service_started
+      - config
+      - jaeger
     entrypoint: ComposePostService
     volumes:
       - ./config:/social-network-microservices/config
@@ -93,12 +85,9 @@ services:
       - 10002:9090
     restart: always
     depends_on:
-      config:
-        condition: service_completed_successfully
-      jaeger:
-        condition: service_started
-      post-storage-mongodb:
-        condition: service_started
+      - config
+      - jaeger
+      - post-storage-mongodb
     entrypoint: PostStorageService
     volumes:
       - ./config:/social-network-microservices/config
@@ -110,8 +99,7 @@ services:
     ports:
       - 11212:11211
     depends_on:
-      config:
-        condition: service_completed_successfully
+      - config
     restart: always
 
   post-storage-mongodb:
@@ -120,8 +108,7 @@ services:
     ports:
       - 27019:27017
     depends_on:
-      config:
-        condition: service_completed_successfully
+      - config
     restart: always
     command: --config /social-network-microservices/config/mongod.conf
     volumes:
@@ -135,12 +122,9 @@ services:
       - 10003:9090
     restart: always
     depends_on:
-      config:
-        condition: service_completed_successfully
-      jaeger:
-        condition: service_started
-      user-timeline-mongodb:
-        condition: service_started
+      - config
+      - jaeger
+      - user-timeline-mongodb
     entrypoint: UserTimelineService
     volumes:
       - ./config:/social-network-microservices/config
@@ -152,8 +136,7 @@ services:
     ports:
       - 6383:6379
     depends_on:
-      config:
-        condition: service_completed_successfully
+      - config
     restart: always
     command: /social-network-microservices/config/redis.conf
     volumes:
@@ -166,8 +149,7 @@ services:
     ports:
       - 27020:27017
     depends_on:
-      config:
-        condition: service_completed_successfully
+      - config
     restart: always
     command: --config /social-network-microservices/config/mongod.conf
     volumes:
@@ -182,12 +164,9 @@ services:
     restart: always
     entrypoint: UrlShortenService
     depends_on:
-      config:
-        condition: service_completed_successfully
-      jaeger:
-        condition: service_started
-      url-shorten-mongodb:
-        condition: service_started
+      - config
+      - jaeger
+      - url-shorten-mongodb
     volumes:
       - ./config:/social-network-microservices/config
       - ./keys:/keys
@@ -198,8 +177,7 @@ services:
     ports:
       - 11213:11211
     depends_on:
-      config:
-        condition: service_completed_successfully
+      - config
     restart: always
 
   url-shorten-mongodb:
@@ -208,8 +186,7 @@ services:
     ports:
       - 27021:27017
     depends_on:
-      config:
-        condition: service_completed_successfully
+      - config
     restart: always
     command: --config /social-network-microservices/config/mongod.conf
     volumes:
@@ -223,12 +200,9 @@ services:
       - 10005:9090
     restart: always
     depends_on:
-      config:
-        condition: service_completed_successfully
-      jaeger:
-        condition: service_started
-      user-mongodb:
-        condition: service_started
+      - config
+      - jaeger
+      - user-mongodb
     entrypoint: UserService
     volumes:
       - ./config:/social-network-microservices/config
@@ -240,8 +214,7 @@ services:
     ports:
       - 11214:11211
     depends_on:
-      config:
-        condition: service_completed_successfully
+      - config
     restart: always
 
   user-mongodb:
@@ -250,8 +223,7 @@ services:
     ports:
       - 27023:27017
     depends_on:
-      config:
-        condition: service_completed_successfully
+      - config
     restart: always
     command: --config /social-network-microservices/config/mongod.conf
     volumes:
@@ -264,12 +236,9 @@ services:
     ports:
       - 10006:9090
     depends_on:
-      config:
-        condition: service_completed_successfully
-      jaeger:
-        condition: service_started
-      media-mongodb:
-        condition: service_started
+      - config
+      - jaeger
+      - media-mongodb
     restart: always
     entrypoint: MediaService
     volumes:
@@ -282,8 +251,7 @@ services:
     ports:
       - 11215:11211
     depends_on:
-      config:
-        condition: service_completed_successfully
+      - config
     restart: always
 
   media-mongodb:
@@ -292,8 +260,7 @@ services:
     ports:
       - 27024:27017
     depends_on:
-      config:
-        condition: service_completed_successfully
+      - config
     restart: always
     command: --config /social-network-microservices/config/mongod.conf
     volumes:
@@ -307,10 +274,8 @@ services:
       - 10007:9090
     restart: always
     depends_on:
-      config:
-        condition: service_completed_successfully
-      jaeger:
-        condition: service_started
+      - config
+      - jaeger
     entrypoint: TextService
     volumes:
       - ./config:/social-network-microservices/config
@@ -323,10 +288,8 @@ services:
       - 10008:9090
     restart: always
     depends_on:
-      config:
-        condition: service_completed_successfully
-      jaeger:
-        condition: service_started
+      - config
+      - jaeger
     entrypoint: UniqueIdService
     volumes:
       - ./config:/social-network-microservices/config
@@ -338,10 +301,8 @@ services:
     ports:
       - 10009:9090
     depends_on:
-      config:
-        condition: service_completed_successfully
-      jaeger:
-        condition: service_started
+      - config
+      - jaeger
     restart: always
     entrypoint: UserMentionService
     volumes:
@@ -351,13 +312,11 @@ services:
   home-timeline-service:
     image: yg397/social-network-microservices:latest
     hostname: home-timeline-service
-    ports:
-      - 10010:9090
+      ports:
+        - 10010:9090
     depends_on:
-      config:
-        condition: service_completed_successfully
-      jaeger:
-        condition: service_started
+      - config
+      - jaeger
     restart: always
     entrypoint: HomeTimelineService
     volumes:
@@ -370,10 +329,8 @@ services:
     ports:
       - 8080:8080
     depends_on:
-      config:
-        condition: service_completed_successfully
-      jaeger:
-        condition: service_started
+      - config
+      - jaeger
     restart: always
     volumes:
       - ./nginx-web-server/lua-scripts:/usr/local/openresty/nginx/lua-scripts
@@ -391,10 +348,8 @@ services:
       - 8081:8080
     restart: always
     depends_on:
-      config:
-        condition: service_completed_successfully
-      jaeger:
-        condition: service_started
+      - config
+      - jaeger
     volumes:
       - ./media-frontend/lua-scripts:/usr/local/openresty/nginx/lua-scripts
       - ./media-frontend/conf/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
