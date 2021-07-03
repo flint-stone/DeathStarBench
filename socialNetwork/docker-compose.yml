@@ -44,7 +44,7 @@ services:
     ports:
       - 6380:6379
     depends_on:
-      -nconfig
+      - config
     restart: always
     command: /social-network-microservices/config/redis.conf
     volumes:
