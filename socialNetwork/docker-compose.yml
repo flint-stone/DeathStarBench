@@ -13,8 +13,8 @@ services:
   social-graph-service:
     image: yg397/social-network-microservices:latest
     hostname: social-graph-service
-       ports:
-         - 10000:9090
+    ports:
+      - 10000:9090
     depends_on:
       config:
         condition: service_completed_successfully
@@ -73,8 +73,8 @@ services:
   compose-post-service:
     image: yg397/social-network-microservices:latest
     hostname: compose-post-service
-       ports:
-         - 10001:9090
+    ports:
+      - 10001:9090
     restart: always
     depends_on:
       config:
@@ -107,8 +107,8 @@ services:
   post-storage-memcached:
     image: memcached
     hostname: post-storage-memcached
-       ports:
-         - 11212:11211
+    ports:
+      - 11212:11211
     depends_on:
       config:
         condition: service_completed_successfully
@@ -117,8 +117,8 @@ services:
   post-storage-mongodb:
     image: mongo
     hostname: post-storage-mongodb
-       ports:
-         - 27019:27017
+    ports:
+      - 27019:27017
     depends_on:
       config:
         condition: service_completed_successfully
@@ -131,8 +131,8 @@ services:
   user-timeline-service:
     image: yg397/social-network-microservices:latest
     hostname: user-timeline-service
-       ports:
-         - 10003:9090
+    ports:
+      - 10003:9090
     restart: always
     depends_on:
       config:
@@ -149,8 +149,8 @@ services:
   user-timeline-redis:
     image: redis
     hostname: user-timeline-redis
-       ports:
-         - 6383:6379
+    ports:
+      - 6383:6379
     depends_on:
       config:
         condition: service_completed_successfully
@@ -163,8 +163,8 @@ services:
   user-timeline-mongodb:
     image: mongo
     hostname: user-timeline-mongodb
-       ports:
-         - 27020:27017
+    ports:
+      - 27020:27017
     depends_on:
       config:
         condition: service_completed_successfully
@@ -177,8 +177,8 @@ services:
   url-shorten-service:
     image: yg397/social-network-microservices:latest
     hostname: url-shorten-service
-       ports:
-         - 10004:9090
+    ports:
+      - 10004:9090
     restart: always
     entrypoint: UrlShortenService
     depends_on:
@@ -195,8 +195,8 @@ services:
   url-shorten-memcached:
     image: memcached
     hostname: url-shorten-memcached
-       ports:
-         - 11213:11211
+    ports:
+      - 11213:11211
     depends_on:
       config:
         condition: service_completed_successfully
@@ -205,8 +205,8 @@ services:
   url-shorten-mongodb:
     image: mongo
     hostname: url-shorten-mongodb
-       ports:
-         - 27021:27017
+    ports:
+      - 27021:27017
     depends_on:
       config:
         condition: service_completed_successfully
@@ -219,8 +219,8 @@ services:
   user-service:
     image: yg397/social-network-microservices:latest
     hostname: user-service
-       ports:
-         - 10005:9090
+    ports:
+      - 10005:9090
     restart: always
     depends_on:
       config:
@@ -237,8 +237,8 @@ services:
   user-memcached:
     image: memcached
     hostname: user-memcached
-       ports:
-         - 11214:11211
+    ports:
+      - 11214:11211
     depends_on:
       config:
         condition: service_completed_successfully
@@ -247,8 +247,8 @@ services:
   user-mongodb:
     image: mongo
     hostname: user-mongodb
-       ports:
-         - 27023:27017
+    ports:
+      - 27023:27017
     depends_on:
       config:
         condition: service_completed_successfully
@@ -261,8 +261,8 @@ services:
   media-service:
     image: yg397/social-network-microservices:latest
     hostname: media-service
-       ports:
-         - 10006:9090
+    ports:
+      - 10006:9090
     depends_on:
       config:
         condition: service_completed_successfully
@@ -279,8 +279,8 @@ services:
   media-memcached:
     image: memcached
     hostname: media-memcached
-       ports:
-         - 11215:11211
+    ports:
+      - 11215:11211
     depends_on:
       config:
         condition: service_completed_successfully
@@ -289,8 +289,8 @@ services:
   media-mongodb:
     image: mongo
     hostname: media-mongodb
-       ports:
-         - 27024:27017
+    ports:
+      - 27024:27017
     depends_on:
       config:
         condition: service_completed_successfully
@@ -303,8 +303,8 @@ services:
   text-service:
     image: yg397/social-network-microservices:latest
     hostname: text-service
-       ports:
-         - 10007:9090
+    ports:
+      - 10007:9090
     restart: always
     depends_on:
       config:
@@ -319,8 +319,8 @@ services:
   unique-id-service:
     image: yg397/social-network-microservices:latest
     hostname: unique-id-service
-       ports:
-         - 10008:9090
+    ports:
+      - 10008:9090
     restart: always
     depends_on:
       config:
@@ -335,8 +335,8 @@ services:
   user-mention-service:
     image: yg397/social-network-microservices:latest
     hostname: user-mention-service
-       ports:
-         - 10009:9090
+    ports:
+      - 10009:9090
     depends_on:
       config:
         condition: service_completed_successfully
@@ -351,8 +351,8 @@ services:
   home-timeline-service:
     image: yg397/social-network-microservices:latest
     hostname: home-timeline-service
-       ports:
-         - 10010:9090
+    ports:
+      - 10010:9090
     depends_on:
       config:
         condition: service_completed_successfully
